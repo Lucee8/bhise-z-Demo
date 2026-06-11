@@ -23,6 +23,12 @@ export interface Product {
   finishesList?: { name: string; color: string }[];
   optionsLabel?: string;     // e.g. "Underbed storage options"
   optionsList?: string[];     // e.g. ["Hydraulic Storage", "Non Storage"]
+  woodTypePrices?: {
+    Aakashi?: number;
+    Shivan?: number;
+    Sagwan?: number;
+  };
+  availableSize?: string;     // e.g. "78x36"
   priceRules?: {
     sizeAdjustments?: Record<string, number>;        // adjustments for the selected size
     origSizeAdjustments?: Record<string, number>;    // adjustments for the original (un-discounted) price

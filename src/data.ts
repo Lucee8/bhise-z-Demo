@@ -1,6 +1,7 @@
 import { Product } from './types';
 import { CUSTOM_PRODUCTS, PRODUCT_OVERRIDES } from './custom_products';
 import { PRODUCT_DESCRIPTIONS } from './product_descriptions';
+import { getCsvSpecs } from './csv_pricing';
 
 export interface SubCategory {
   name: string;
@@ -790,7 +791,6 @@ const generateProducts = (): Product[] => {
 
         const calculatedPrice = sub.basePrice + (i - 1) * 350;
         const discountMult = 1.35 + (i % 3) * 0.05;
-        const origPrice = Math.round((calculatedPrice * discountMult) / 500) * 500;
 
         let badge: 'bs' | 'new' | 'cus' | null = null;
         if (i === 1) badge = 'bs';
@@ -801,18 +801,49 @@ const generateProducts = (): Product[] => {
         const shortDesc = descOverride?.shortDesc || `Handcrafted with seasoned native timber wood. Built using durable standard premium joinery for generation-lasting strength.`;
         const description = descOverride?.description || `Designed and perfected in Bhisez Sindhudurg workshop of Ramesh Bhise, this ${sub.name} is a fine specimen of Indian carpentry. Features premium selected grains, borer resistant seasoning, and flawless double coat PU satin finish. Excellent ergonomics matching compact as well as royal traditional architecture.`;
 
+        // Retrieve specs mapped from CSV file
+        const csvSpecs = getCsvSpecs(cat.slug, sub.slug, i);
+        let woodTypePrices = csvSpecs.woodTypePrices;
+        const availableSize = csvSpecs.availableSize;
+
+        // If no explicit wood type prices are in the CSV, generate fallbacks dynamically
+        if (!woodTypePrices) {
+          woodTypePrices = {
+            Aakashi: Math.round((calculatedPrice * 0.8) / 100) * 100,
+            Shivan: Math.round(calculatedPrice / 100) * 100,
+            Sagwan: Math.round((calculatedPrice * 1.25) / 100) * 100
+          };
+        }
+
+        // Set the default base price in catalog list to Sagwan wood type's price (or first available if Sagwan is not in the set)
+        let baseProductPrice = calculatedPrice;
+        if (woodTypePrices) {
+          if (woodTypePrices.Sagwan) {
+            baseProductPrice = woodTypePrices.Sagwan;
+          } else {
+            const keys = Object.keys(woodTypePrices) as ('Aakashi' | 'Shivan' | 'Sagwan')[];
+            if (keys.length > 0) {
+              baseProductPrice = woodTypePrices[keys[0]] || calculatedPrice;
+            }
+          }
+        }
+
+        const origPrice = Math.round((baseProductPrice * discountMult) / 500) * 500;
+
         list.push({
           id,
           name,
           category: cat.slug,
           subCategory: sub.slug,
-          price: calculatedPrice,
+          price: baseProductPrice,
           orig: origPrice,
           img,
           badge,
           colors: ['#4A2511', '#2C1608', '#CBB89D'],
           shortDesc,
           description,
+          woodTypePrices,
+          availableSize,
           ...defaults
         });
       }

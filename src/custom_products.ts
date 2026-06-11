@@ -24,8 +24,6 @@ export const PRODUCT_OVERRIDES: Record<string, Partial<Product>> = {
   "beds-premium-bed-1": {
     name: "BED - premium bed #01",
     material: "Solid Teak Wood",
-    price: 37000, // ⭐️ EXACTLY ₹37,000 as requested in shared image
-    orig: 51000,  // ⭐️ EXACTLY ₹51,000 (27% OFF) as requested in shared image
     badge: "bs",  // 'bs' = Bestseller, 'new' = New Arrival, 'cus' = Custom, null = No badge
     img: "/images/BED/premium bed 01.webP", // Set your local image path here
     seriesName: "seasoned hardwood series",  // ⭐️ "seasoned hardwood series" as requested
@@ -54,8 +52,6 @@ export const PRODUCT_OVERRIDES: Record<string, Partial<Product>> = {
   "beds-premium-bed-2": {
     name: "BED - premium bed #02",
     material: "Premium Cane & Rosewood",
-    price: 42350,
-    orig: 61500,
     badge: "new",
     img: "/images/BED/premium bed 02.webP",
     seriesName: "artisan cane & timber collection",
@@ -82,16 +78,12 @@ export const PRODUCT_OVERRIDES: Record<string, Partial<Product>> = {
   "beds-premium-bed-3": {
     name: "BED - premium bed #03",
     material: "Premium Solid Wood",
-    price: 42700,
-    orig: 57500,
     img: "/images/BED/premium bed 03.webP",
     shortDesc: "Elegant premium joinery with royal layout.",
   },
   "beds-premium-bed-4": {
     name: "BED - premium bed #04",
     material: "Premium Solid Wood",
-    price: 43050,
-    orig: 60500,
     img: "/images/BED/premium bed 04.webP",
     shortDesc: "Elegant premium joinery with royal layout.",
   },
@@ -100,8 +92,6 @@ export const PRODUCT_OVERRIDES: Record<string, Partial<Product>> = {
   "beds-open-bed-1": {
     name: "BED - open bed #01",
     material: "Solid Teakwood",
-    price: 32000,
-    orig: 45000,
     img: "/images/BED/open bed 01.webP",
     seriesName: "minimalist sleek frames",
     sizingLabel: "Platform Sizing",
@@ -116,8 +106,6 @@ export const PRODUCT_OVERRIDES: Record<string, Partial<Product>> = {
   "wooden-sofas-sofa-1": {
     name: "WOODEN SOFA - Sofa #01",
     material: "Seasoned Teakwood",
-    price: 38000,
-    orig: 52000,
     badge: "bs",
     img: "/images/SOFA/sofa 01.webP",
     seriesName: "modular lounge series",
@@ -143,8 +131,6 @@ export const PRODUCT_OVERRIDES: Record<string, Partial<Product>> = {
   "wooden-sofas-sofa-2": {
     name: "WOODEN SOFA - Sofa #02",
     material: "Seasoned Teakwood",
-    price: 22350,
-    orig: 32500,
     badge: "new",
     img: "/images/SOFA/sofa 02.webP",
   },
@@ -153,7 +139,6 @@ export const PRODUCT_OVERRIDES: Record<string, Partial<Product>> = {
   "wooden-chairs-chair-1": {
     name: "CHAIR - Solid Wood #01",
     material: "Selected Teakwood",
-    price: 3500,
     img: "/images/CHAIR/chair 01.webP",
     seriesName: "handmade seat options",
     sizingLabel: "Seating Elevation",
@@ -171,8 +156,6 @@ export const PRODUCT_OVERRIDES: Record<string, Partial<Product>> = {
   "wooden-mandirs-mandir-1": {
     name: "MANDIR - Teakwood Temple #01",
     material: "Premium Teakwood",
-    price: 18500,
-    orig: 24000,
     img: "/images/MANDIR/mandir 01.webP",
     seriesName: "divine sanctuary collection",
     sizingLabel: "Temple Width / Sizing",

@@ -69,91 +69,91 @@ const SUMMER_HERO_SLIDES = [
 const IMG_GRID_CATEGORIES = [
   { 
     label: 'Beds', 
-    img: '/images/BED/trolley bed 07.webP', 
+    img: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&q=80', 
     categoryKey: 'beds', 
     filters: ['All', 'Bedroom'] 
   },
   { 
     label: 'Wooden Sofas', 
-    img: '/images/SOFA/sofa 05.webP', 
+    img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80', 
     categoryKey: 'wooden-sofas', 
     filters: ['All', 'Living'] 
   },
   { 
     label: 'Wooden Chairs', 
-    img: '/images/CHAIR/z chair.webP', 
+    img: 'https://images.unsplash.com/photo-1592078615290-033ee584e267?w=600&q=80', 
     categoryKey: 'wooden-chairs', 
     filters: ['All', 'Living'] 
   },
   { 
     label: 'DoorFrames', 
-    img: '/images/DOOR AND FRAMES/set 01.webP', 
+    img: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&q=80', 
     categoryKey: 'door-frames', 
     filters: ['All', 'Doors & Puja'] 
   },
   { 
     label: 'Dressing Table', 
-    img: '/images/DRESSING TABLE/dressing table 002.webP', 
+    img: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&q=80', 
     categoryKey: 'dressing-table', 
     filters: ['All', 'Bedroom'] 
   },
   { 
     label: 'Wooden Swings', 
-    img: '/images/SWING/swing 02.webP', 
+    img: 'https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?w=600&q=80', 
     categoryKey: 'wooden-swings', 
     filters: ['All', 'Living'] 
   },
   { 
     label: 'Wooden Safety Doors', 
-    img: '/images/DOOR AND FRAMES/safety door 04.webP', 
+    img: 'https://images.unsplash.com/photo-1509644851169-2acc08aa25b5?w=600&q=80', 
     categoryKey: 'wooden-safety-doors', 
     filters: ['All', 'Doors & Puja'] 
   },
   { 
     label: 'Wooden Mandirs', 
-    img: '/images/MANDIR/mandir 35.webP', 
+    img: 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=600&q=80', 
     categoryKey: 'wooden-mandirs', 
     filters: ['All', 'Doors & Puja'] 
   },
   { 
     label: 'Teapoys & Coffee Tables', 
-    img: '/images/TEAPOY/teapoy 07.webP', 
+    img: 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=600&q=80', 
     categoryKey: 'teapoys-coffee-tables', 
     filters: ['All', 'Living'] 
   },
   { 
     label: 'Sofa Cum Beds', 
-    img: '/images/SOFA/sofa cum bed 03.webP', 
+    img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80', 
     categoryKey: 'sofa-cum-beds', 
     filters: ['All', 'Living', 'Bedroom'] 
   },
   { 
     label: 'Dining Tables', 
-    img: '/images/DINING/dining 07.webP', 
+    img: 'https://images.unsplash.com/photo-1615066390971-03e4e1c36ddf?w=600&q=80', 
     categoryKey: 'dining-tables', 
     filters: ['All', 'Dining'] 
   },
   { 
     label: 'Wardrobes', 
-    img: '/images/WARDROBE/wardrobe 11.webP', 
+    img: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=600&q=80', 
     categoryKey: 'wardrobes', 
     filters: ['All', 'Bedroom'] 
   },
   { 
     label: 'TV Units', 
-    img: '/images/TV UNIT/tv unit 01.webP', 
+    img: 'https://images.unsplash.com/photo-16074730318d2-64f26046e8c7?w=600&q=80', 
     categoryKey: 'tv-units', 
     filters: ['All', 'Living'] 
   },
   { 
     label: 'Chaurang & Paats', 
-    img: '/images/CHAURANG AND PATH/chaurang 03.webP', 
+    img: 'https://images.unsplash.com/photo-1581428982868-e410dd047a90?w=600&q=80', 
     categoryKey: 'chaurang-and-paats', 
     filters: ['All', 'Doors & Puja'] 
   },
   { 
     label: 'Diwans', 
-    img: '/images/DIWAN/trolley diwan.webP', 
+    img: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=600&q=80', 
     categoryKey: 'diwans', 
     filters: ['All', 'Living'] 
   }
@@ -162,88 +162,108 @@ const IMG_GRID_CATEGORIES = [
 // 3. Stories Behind the Style vertical items
 const STYLE_STORIES = [
   {
-    name: 'Premium Wooden Bunk Bed with Storage Stairs (Walnut Finish)',
+    name: 'Adolph 7-Drawer Wooden Chest Of Drawers (Honey Finish)',
     price: 31999,
     oldPrice: 53999,
     discount: '41% OFF',
     stars: 5,
     count: 198,
-    img: '/images/Common/bunkbed.webP ',
+    img: 'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=500&q=80',
     id: 'bed-3'
   },
   {
-    name: 'Heritage 6-Seater Dining Table Set',
+    name: 'Lotus Premium Sheesham Wood Bed with Drawer Storage (King Size)',
     price: 54999,
     oldPrice: 101999,
     discount: '46% OFF',
     stars: 5,
     count: 198,
-    img: '/images/Common/diningtable.webP',
+    img: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=500&q=80',
     id: 'bed-5'
   },
   {
-    name: 'Modern 5-Seater Wooden Sofa Set',
+    name: 'Shriyam Modern 6 Seater Sheesham Wood Dining Set with Mishaan Chairs',
     price: 149999,
     oldPrice: 249999,
     discount: '40% OFF',
     stars: 5,
     count: 80,
-    img: '/images/Common/sofacumbed.webP',
+    img: 'https://images.unsplash.com/photo-1615066390971-03e4e1c36ddf?w=500&q=80',
     id: 'table-1'
   },
   {
-    name: 'Premium 4-Door Wooden Wardrobe with Shelves & Drawer Storage (Walnut Finish)',
+    name: 'Shashwat 2 Seater Sheesham Wood Cane Swing Chair (Sand Grey)',
     price: 86999,
     oldPrice: 171999,
     discount: '49% OFF',
     stars: 5,
     count: 184,
-    img: '/images/Common/wardrobe.webP',
+    img: 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=500&q=80',
     id: 'bed-10'
+  },
+  {
+    name: 'Oxford 3 Seater Fabric Sofa (Indigo Blue Premium Matte Finish)',
+    price: 43999,
+    oldPrice: 90999,
+    discount: '51% OFF',
+    stars: 5,
+    count: 80,
+    img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500&q=80',
+    id: 'sofa-1'
   }
 ];
 
 // 4. Discover whats new items
 const NEW_DISCOVERIES = [
   {
-    name: 'Modern Wooden TV Unit with Storage Cabinets (Walnut Finish)',
+    name: 'Ayaana Sheesham Wood 3 Seater Sofa Cum Bed with Cane Weaving',
     price: 67499,
     oldPrice: 146999,
     discount: '54% OFF',
     stars: 5,
     count: 146,
-    img: '/images/Common/tv unit 01.webP',
+    img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&q=80',
     id: 'sofa-2'
   },
   {
-    name: 'Modern Wooden Dining Table Set with Cushioned Chairs (Teak Finish)',
+    name: 'Albus 3 Seater Fabric Sofa (Cotton Canvas, Jade Ivory Tweed)',
     price: 37999,
     oldPrice: 63999,
     discount: '41% OFF',
     stars: 5,
     count: 14,
-    img: '/images/Common/dining.webP',
+    img: 'https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=500&q=80',
     id: 'sofa-3'
   },
   {
-    name: 'Premium Wooden Pooja Mandir with Drawer Storage (Walnut Finish)',
+    name: 'Calmora Engineered Wood Bed with Upholstered Headboard Storage',
     price: 19999,
     oldPrice: 41999,
     discount: '52% OFF',
     stars: 5,
     count: 143,
-    img: '/images/Common/mandir.jpg',
+    img: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=500&q=80',
     id: 'bed-2'
   },
   {
-    name: 'Premium Wooden Indoor Swing with Decorative Frame',
+    name: 'Avira Premium Upholstery Lounge Chair (Salmon Pink / Brass Caps)',
     price: 11999,
     oldPrice: 31999,
     discount: '63% OFF',
     stars: 5,
     count: 20,
-    img: '/images/Common/swing.webP',
+    img: 'https://images.unsplash.com/photo-1551298370-9d3d53740c72?w=500&q=80',
     id: 'sofa-1'
+  },
+  {
+    name: 'Eka Premium Mango Wood Console Table with Natural Cane detailing',
+    price: 31499,
+    oldPrice: 58999,
+    discount: '46% OFF',
+    stars: 5,
+    count: 48,
+    img: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=500&q=80',
+    id: 'bed-10'
   }
 ];
 
@@ -439,7 +459,7 @@ export default function HomeView({
               className="relative rounded-2xl overflow-hidden bg-stone-800 shadow-2xs border border-stone-200 h-[142px] sm:h-[222px] cursor-pointer group"
             >
               <img 
-                src="alt" 
+                src="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=600&q=80" 
                 alt="Mattress Promo" 
                 className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-103"
                 referrerPolicy="no-referrer"
@@ -571,7 +591,8 @@ export default function HomeView({
 
       </section>
 
-            {/* ── SECTION: YOUTUBE SHORTS SHOWCASE CAROUSEL ── */}
+
+      {/* ── SECTION: YOUTUBE SHORTS SHOWCASE CAROUSEL ── */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 sm:mt-22 border-t border-stone-100 pt-14 mb-12">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-8">
           <div>
@@ -893,43 +914,41 @@ export default function HomeView({
         {/* Flex cards displaying quality elements */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="relative rounded-2xl h-[240px] overflow-hidden group border border-stone-100">
-           
-           <img src="/images/Common/Bed101.webP" alt="Master Bedroom" className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500" referrerPolicy="no-referrer" />
-
+            <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=600&q=80" alt="Master Bedroom" className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500" referrerPolicy="no-referrer" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
             <div className="absolute bottom-5 left-5 text-white">
               <span className="bg-[#FBBD18] text-stone-950 text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider block w-fit mb-1.5">Rating: 4.9/5</span>
-              <h4 className="font-serif text-lg font-bold">Premium Wooden Storage Bed</h4>
-              <p className="text-stone-300 text-[11px] mt-0.5">Handcrafted hardwood frame with spacious underbed drawer storage</p>
+              <h4 className="font-serif text-lg font-bold">Premium King Storage Bed</h4>
+              <p className="text-stone-300 text-[11px] mt-0.5">Heavy-duty gas pump lifter & seasoned Teakwood</p>
             </div>
           </div>
           
           <div className="relative rounded-2xl h-[240px] overflow-hidden group border border-stone-100">
-           
-           <img src="/images/Common/sofa102.webP" alt="Sofa Suite" className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500" referrerPolicy="no-referrer" />
-
+            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80" alt="Sofa Suite" className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500" referrerPolicy="no-referrer" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
             <div className="absolute bottom-5 left-5 text-white">
               <span className="bg-[#FBBD18] text-stone-950 text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider block w-fit mb-1.5">Rating: 4.8/5</span>
-              <h4 className="font-serif text-lg font-bold">Heritage Wooden Sofa Set</h4>
-              <p className="text-stone-300 text-[11px] mt-0.5">Premium cushioned seating with solid wood craftsmanship</p>
+              <h4 className="font-serif text-lg font-bold">Royal Lounge Couch Suite</h4>
+              <p className="text-stone-300 text-[11px] mt-0.5">Ergonomic posture foam wrapped in velvet</p>
             </div>
           </div>
 
           <div className="relative rounded-2xl h-[240px] overflow-hidden group border border-stone-100">
-            
-            <img src="/images/Common/dining103.webP" alt="Dining Set" className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500" referrerPolicy="no-referrer" />
-
+            <img src="https://images.unsplash.com/photo-1615066390971-03e4e1c36ddf?w=600&q=80" alt="Dining Set" className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500" referrerPolicy="no-referrer" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
             <div className="absolute bottom-5 left-5 text-white">
               <span className="bg-[#FBBD18] text-stone-950 text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider block w-fit mb-1.5">Rating: 5.0/5</span>
-              <h4 className="font-serif text-lg font-bold">Signature Dining Collection</h4>
-              <p className="text-stone-300 text-[11px] mt-0.5">Timeless elegance crafted for memorable family gatherings</p>
+              <h4 className="font-serif text-lg font-bold">6 Seater Danish Dining Set</h4>
+              <p className="text-stone-300 text-[11px] mt-0.5">Natural matte resin finish resisting daily stains</p>
             </div>
           </div>
         </div>
 
       </section>
+
+
+
+
 
 
 

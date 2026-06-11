@@ -82,12 +82,19 @@ export default function ProductDetailView({
 
   const deliverySubtext = product.deliverySubtext || "Includes free local white-glove installation & GST invoice.";
 
+  const availableWoodTypes = product.woodTypePrices && Object.keys(product.woodTypePrices).length > 0
+    ? (Object.keys(product.woodTypePrices) as ('Aakashi' | 'Shivan' | 'Sagwan')[])
+    : (['Aakashi', 'Shivan', 'Sagwan'] as ('Aakashi' | 'Shivan' | 'Sagwan')[]);
+
   // Config state
   const [selectedSize, setSelectedSize] = useState<string>(() => {
     return sizesList.length > 0 ? sizesList[0] : 'King Size';
   });
   const [selectedFinish, setSelectedFinish] = useState<string>(() => {
     return finishesList.length > 0 ? finishesList[0].name : 'Amber Walnut';
+  });
+  const [selectedWoodType, setSelectedWoodType] = useState<string>(() => {
+    return availableWoodTypes.includes('Sagwan') ? 'Sagwan' : (availableWoodTypes.length > 0 ? availableWoodTypes[0] : 'Sagwan');
   });
   const [selectedStorage, setSelectedStorage] = useState<string>(() => {
     return optionsList.length > 0 ? optionsList[0] : '';
@@ -125,6 +132,12 @@ export default function ProductDetailView({
     setSelectedSize(newSizes.length > 0 ? newSizes[0] : 'King Size');
     setSelectedFinish(newFinishes.length > 0 ? newFinishes[0].name : 'Amber Walnut');
     setSelectedStorage(newOptions.length > 0 ? newOptions[0] : '');
+    
+    const newWoodTypes = product.woodTypePrices && Object.keys(product.woodTypePrices).length > 0
+      ? (Object.keys(product.woodTypePrices) as ('Aakashi' | 'Shivan' | 'Sagwan')[])
+      : (['Aakashi', 'Shivan', 'Sagwan'] as ('Aakashi' | 'Shivan' | 'Sagwan')[]);
+    setSelectedWoodType(newWoodTypes.includes('Sagwan') ? 'Sagwan' : (newWoodTypes.length > 0 ? newWoodTypes[0] : 'Sagwan'));
+
     setDeliveryDate('');
     setPincodeChecked(false);
     setPincode('');
@@ -144,7 +157,9 @@ export default function ProductDetailView({
 
   // Live price adjustment
   const computedPrice = (() => {
-    let base = product.price;
+    let base = product.woodTypePrices && product.woodTypePrices[selectedWoodType as keyof typeof product.woodTypePrices]
+      ? product.woodTypePrices[selectedWoodType as keyof typeof product.woodTypePrices]!
+      : product.price;
 
     if (product.priceRules?.sizeAdjustments) {
       if (typeof product.priceRules.sizeAdjustments[selectedSize] !== 'undefined') {
@@ -175,7 +190,9 @@ export default function ProductDetailView({
   })();
 
   const computedOrigPrice = (() => {
-    let base = product.orig || product.price;
+    let base = product.woodTypePrices && product.woodTypePrices[selectedWoodType as keyof typeof product.woodTypePrices]
+      ? Math.round((product.woodTypePrices[selectedWoodType as keyof typeof product.woodTypePrices]! * 1.35) / 100) * 100
+      : (product.orig || product.price);
 
     if (product.priceRules?.origSizeAdjustments) {
       if (typeof product.priceRules.origSizeAdjustments[selectedSize] !== 'undefined') {
@@ -220,7 +237,7 @@ export default function ProductDetailView({
   };
 
   const handleAddToCartClick = () => {
-    onAddToCart(product, quantity, selectedSize, selectedFinish, selectedStorage);
+    onAddToCart(product, quantity, selectedSize, selectedWoodType, selectedStorage);
     // After adding, go to cart
     onNavigate('cart');
   };
@@ -296,7 +313,7 @@ export default function ProductDetailView({
               
               {/* Fallback Unsplash wood details thumbs */}
               {[
-                'alt',
+                'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=600&q=80',
                 'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=500&q=80',
                 'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=500&q=80',
                 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500&q=80'
@@ -320,6 +337,13 @@ export default function ProductDetailView({
               <span className="text-xs font-black tracking-widest text-[#8B6F5C] uppercase">{seriesName}</span>
               <h1 className="font-serif text-2xl sm:text-3xl font-black text-amber-950 mt-1 leading-tight">{product.name}</h1>
               <p className="text-xs text-[#8B6F5C] mt-2">By <button onClick={() => onNavigate('about')} className="underline hover:text-amber-900 bg-transparent border-none p-0">{brandName}</button></p>
+              
+              {product.availableSize && (
+                <div className="mt-3.5 inline-flex items-center space-x-1.5 bg-amber-50 border border-amber-200 px-3.5 py-1.5 rounded-xl text-xs font-bold text-amber-900 shadow-3xs">
+                  <span>📐</span>
+                  <span>Available Size/Dimensions: <strong>{product.availableSize}</strong></span>
+                </div>
+              )}
             </div>
 
             <hr className="border-[#E0D8CF]" />
@@ -342,21 +366,32 @@ export default function ProductDetailView({
               </div>
             )}
 
-            {/* Polish finish swatches */}
-            {finishesList.length > 0 && (
+            {/* Wood Type Selection */}
+            {availableWoodTypes.length > 0 && (
               <div className="space-y-2.5">
-                <span className="text-xs font-bold text-stone-500 uppercase tracking-wider block">{finishesLabel}</span>
+                <span className="text-xs font-bold text-stone-500 uppercase tracking-wider block">Wood Type selection</span>
                 <div className="flex flex-wrap gap-2.5">
-                  {finishesList.map(f => (
-                    <button
-                      key={f.name}
-                      onClick={() => setSelectedFinish(f.name)}
-                      className={`flex items-center space-x-2 px-3 py-2 border rounded-xl text-xs font-bold transition-all ${selectedFinish === f.name ? 'bg-[#3D2B1F] border-[#3D2B1F] text-amber-50' : 'bg-transparent border-[#E0D8CF] text-[#3D2B1F] hover:border-[#3D2B1F]'}`}
-                    >
-                      <span className="w-3.5 h-3.5 rounded-full border border-stone-400" style={{ backgroundColor: f.color }} />
-                      <span>{f.name}</span>
-                    </button>
-                  ))}
+                  {availableWoodTypes.map(wood => {
+                    const colors = { Sagwan: '#8F4A14', Shivan: '#C9A36C', Aakashi: '#A37233' };
+                    const detailColor = colors[wood as keyof typeof colors] || '#C9A36C';
+                    const price = product.woodTypePrices?.[wood as keyof typeof product.woodTypePrices];
+                    return (
+                      <button
+                        key={wood}
+                        onClick={() => setSelectedWoodType(wood)}
+                        className={`flex flex-col items-start p-3 border rounded-xl transition-all min-w-[120px] cursor-pointer text-left ${selectedWoodType === wood ? 'bg-[#3D2B1F] border-[#2C1C11] text-amber-50 shadow-xs ring-1 ring-[#3D2B1F]' : 'bg-white border-[#E0D8CF] text-[#3D2B1F] hover:border-[#3D2B1F]'}`}
+                        id={`wood-type-${wood}`}
+                      >
+                        <div className="flex items-center space-x-2 mb-1">
+                          <span className="w-3 h-3 rounded-full border border-stone-300" style={{ backgroundColor: detailColor }} />
+                          <span className="font-extrabold text-xs tracking-wider">{wood}</span>
+                        </div>
+                        <span className={`text-[10px] font-bold ${selectedWoodType === wood ? 'text-amber-200' : 'text-stone-500'}`}>
+                          {price ? `₹${price.toLocaleString('en-IN')}` : 'Contact Quote'}
+                        </span>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             )}
@@ -490,7 +525,7 @@ export default function ProductDetailView({
               )}
 
               <a 
-                href={`https://wa.me/919999999999?text=${encodeURIComponent(`Hi Ramesh! I want to order/enquire details.\nProduct: ${product.name}${sizesList.length > 0 ? `\n${sizingLabel}: ${selectedSize}` : ''}${finishesList.length > 0 ? `\n${finishesLabel}: ${selectedFinish}` : ''}${optionsList.length > 0 && optionsLabel ? `\n${optionsLabel}: ${selectedStorage}` : ''}\nQty: ${quantity}`)}`}
+                href={`https://wa.me/919999999999?text=${encodeURIComponent(`Hi Ramesh! I want to order/enquire details.\nProduct: ${product.name}${product.availableSize ? `\nAvailable Size: ${product.availableSize}` : (sizesList.length > 0 ? `\n${sizingLabel}: ${selectedSize}` : '')}\nWood Type: ${selectedWoodType}${optionsList.length > 0 && optionsLabel ? `\n${optionsLabel}: ${selectedStorage}` : ''}\nQty: ${quantity}`)}`}
                 target="_blank"
                 rel="noreferrer"
                 className="w-full bg-[#25D366] hover:bg-[#1ebd59] text-white font-bold text-xs uppercase tracking-wider py-4 rounded-xl flex items-center justify-center gap-2 shadow-xs text-center"
@@ -510,7 +545,7 @@ export default function ProductDetailView({
           <div className="flex border-b border-[#E0D8CF] space-x-6 overflow-x-auto">
             {[
               { id: 'desc', label: 'Description' },
-              { id: 'spec', label: 'Specifications (Amber Walnut)' },
+              { id: 'spec', label: `Specifications (${selectedWoodType})` },
               { id: 'care', label: 'Woodwork Care' },
               { id: 'returns', label: 'Assembly & Returns' }
             ].map(tab => (
@@ -538,8 +573,14 @@ export default function ProductDetailView({
                 <tbody>
                   <tr className="border-b border-stone-100">
                     <td className="py-2.5 font-bold text-stone-800 w-1/3">Seasoned Timber</td>
-                    <td className="py-2.5">Solid Teak Hardwood (Grade A seasoned)</td>
+                    <td className="py-2.5">Solid {selectedWoodType} Hardwood (Grade A seasoned, borer-proof)</td>
                   </tr>
+                  {product.availableSize && (
+                    <tr className="border-b border-stone-100">
+                      <td className="py-2.5 font-bold text-stone-800">Available Dimensions</td>
+                      <td className="py-2.5 text-stone-900 font-bold">{product.availableSize}</td>
+                    </tr>
+                  )}
                   <tr className="border-b border-stone-100">
                     <td className="py-2.5 font-bold text-stone-800">Support Base Frame</td>
                     <td className="py-2.5">Engineered teak core board panels</td>
